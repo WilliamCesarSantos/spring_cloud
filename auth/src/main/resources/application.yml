@@ -1,0 +1,38 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /auth
+
+logging:
+  level:
+    root: INFO
+
+spring:
+  application:
+    name: auth
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth?createDatabaseIfNotExist=true
+    username: spi
+    password: spi
+
+security:
+  jwt:
+    token:
+      secret-key: auth-jwt-test
+      expire-length: 3600000
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/discovery/eureka
